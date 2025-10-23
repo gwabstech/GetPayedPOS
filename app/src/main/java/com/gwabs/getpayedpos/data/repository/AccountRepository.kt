@@ -4,7 +4,6 @@ import com.gwabs.getpayedpos.data.local.AccountEntity
 import com.gwabs.getpayedpos.data.local.dao.AccountDao
 import kotlinx.coroutines.flow.Flow
 
-// data/AccountRepository.kt
 interface AccountRepository {
     fun account(): Flow<AccountEntity?>
     suspend fun ensureAccount(accountNumber: String)

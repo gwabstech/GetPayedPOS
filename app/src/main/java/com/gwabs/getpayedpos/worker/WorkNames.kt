@@ -6,12 +6,12 @@ import java.util.concurrent.TimeUnit
 object WorkNames {
     const val SYNC_ONE_OFF = "sync_one_off"
     const val SYNC_PERIODIC = "sync_periodic"
-    const val TAG_SYNC = "tag_sync"            // <- NEW
+    const val TAG_SYNC = "tag_sync"
 }
 
 fun enqueueOneOffSync(wm: WorkManager) {
     val request = OneTimeWorkRequestBuilder<SyncWorker>()
-        .addTag(WorkNames.TAG_SYNC)            // <- tag for observation
+        .addTag(WorkNames.TAG_SYNC)
         .setConstraints(
             Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -23,7 +23,7 @@ fun enqueueOneOffSync(wm: WorkManager) {
 
 fun schedulePeriodicSync(wm: WorkManager) {
     val req = PeriodicWorkRequestBuilder<SyncWorker>(15, TimeUnit.MINUTES)
-        .addTag(WorkNames.TAG_SYNC)            // <- tag for observation
+        .addTag(WorkNames.TAG_SYNC)
         .setConstraints(
             Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)

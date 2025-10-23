@@ -1,9 +1,9 @@
 package com.gwabs.getpayedpos.network.dto
 
 data class TransactionDto(
-    val id: Long,            // local id (client-generated)
+    val id: Long,
     val amount: Double,
-    val paymentMethod: String, // "CASH" | "CARD"
+    val paymentMethod: String,
     val timestampMillis: Long,
     val latitude: Double?,
     val longitude: Double?

@@ -28,14 +28,13 @@ fun DashboardScreen(vm: DashboardViewModel = koinViewModel()) {
     val scope = rememberCoroutineScope()
     val ctx = LocalContext.current
 
-    // Prepare sound (place raw/payment_received.mp3 in res/raw/)
+    // Prepare sound
     var player by remember { mutableStateOf<MediaPlayer?>(null) }
     DisposableEffect(Unit) {
         player = MediaPlayer.create(ctx, R.raw.payment_received)
         onDispose { player?.release(); player = null }
     }
 
-// ui/screens/DashboardScreen.kt
     LaunchedEffect(Unit) {
         vm.events.collect { ev ->
             when (ev) {
@@ -107,7 +106,7 @@ fun DashboardScreen(vm: DashboardViewModel = koinViewModel()) {
             Spacer(Modifier.height(16.dp))
             OutlinedButton(
                 onClick = {
-                    enqueueOneOffSync(wm)                // ✅ schedule a one-off sync
+                    enqueueOneOffSync(wm)
                     scope.launch {
                         snackbarHostState.showSnackbar("Sync scheduled")
                     }

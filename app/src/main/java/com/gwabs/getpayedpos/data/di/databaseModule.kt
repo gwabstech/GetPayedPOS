@@ -11,7 +11,6 @@ import com.gwabs.getpayedpos.data.repository.TransferRepositoryImpl
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
-// di/DatabaseModule.kt  (add lines)
 val databaseModule = module {
     single {
         Room.databaseBuilder(androidContext(), AppDatabase::class.java, "pos.db")

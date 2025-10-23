@@ -19,10 +19,10 @@ import org.koin.core.context.startKoin
 
 class App : Application(), Configuration.Provider {
 
-    // Use a lazy factory; no need to resolve from Koin
+
     private val koinWorkerFactory by lazy { KoinWorkerFactory() }
 
-    // ✅ WorkManager 2.9.x+ expects a *property* override
+
     override val workManagerConfiguration: Configuration
         get() = Configuration.Builder()
             .setWorkerFactory(koinWorkerFactory)
@@ -46,10 +46,10 @@ class App : Application(), Configuration.Provider {
 
         }
 
-        // ✅ Call this AFTER startKoin so the bean exists
+
         get<ConnectivityMonitor>().register()
 
-        // Optional: schedule periodic sync on app start
+
         WorkManager.getInstance(this).also { wm ->
             schedulePeriodicSync(wm)
         }

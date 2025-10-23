@@ -66,9 +66,6 @@ class FusedLocationProviderImpl(
     }
 }
 
-/** --- coroutine helpers --- */
-
-// Helper is on the CLIENT (not on Task), so call: client.awaitLastLocationOrNull()
 @SuppressLint("MissingPermission")
 private suspend fun FusedLocationProviderClient.awaitLastLocationOrNull(): Location? =
     suspendCancellableCoroutine { cont ->

@@ -21,7 +21,9 @@ fun AddSaleScreen(vm: AddSaleViewModel = koinViewModel()) {
 
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
-    ) { /* we don't need the result here; provider gracefully handles nulls */ }
+    ) {
+    //  no need for the result here
+    }
 
     fun requestLocationIfNeeded() {
         permissionLauncher.launch(arrayOf(

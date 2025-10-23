@@ -15,7 +15,6 @@ class AddTransactionUseCase(
         ts: Long = System.currentTimeMillis()
     ) {
         txRepo.addTransaction(amount, method, lat, lon, ts)
-        // Immediately reflect in local balance (simplified business rule)
         accountRepo.incrementBalance(amount)
     }
 }
